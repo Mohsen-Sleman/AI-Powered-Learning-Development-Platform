@@ -39,13 +39,13 @@ class Course(models.Model) :
     description = models.TextField()
     difficulty_level = models.CharField(max_length=3,choices=Level.choices,default=Level.BEGINNER)
     instructor = models.ForeignKey('users.User',related_name='courses',on_delete=models.CASCADE)
-    thumbnail = models.ImageField(upload_to='courses/thumbnails/')
+    thumbnail = models.ImageField(upload_to='media/courses/thumbnails/')
     # course_type = models.CharField(max_length=5 , choices=CourseType.choices,default=CourseType.FREE)
     # price = models.DecimalField(max_digits=6,decimal_places=2)
     status = models.CharField(max_length=4,choices=Status.choices,default=Status.DRAFT)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    tracks = models.ManyToManyField('Track',related_name='courses',blank=True,null=True)
+    tracks = models.ManyToManyField('Track',related_name='courses',blank=True)
 
     class Meta:
         ordering = ['-created_at']

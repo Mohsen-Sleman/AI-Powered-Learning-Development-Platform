@@ -1,5 +1,6 @@
 from django.urls import include,path
+from .views import RetriveCourse
 
 urlpatterns = [
-    path('')
+    path('course/<slug:slug>',RetriveCourse.as_view(),name = 'course')
 ]
