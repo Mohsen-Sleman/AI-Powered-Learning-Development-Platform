@@ -44,10 +44,10 @@ class User(AbstractBaseUser,PermissionsMixin) :
         INTERMEDIATE = 'INT', _('Intermediate')
         ADVANCED = 'ADV', _('Advanced')
 
-    email = models.EmailField(unique=True, max_length=200,blank=False,null=False)
-    full_name = models.CharField(max_length=50,blank=False,null=False)
+    email = models.EmailField(unique=True, max_length=200)
+    full_name = models.CharField(max_length=50)
     skill_level = models.CharField(max_length=3,choices=Level.choices,default=Level.BEGINNER)
-    profile_picture = models.ImageField(upload_to='profiel_pics/',blank=True,null=True)
+    profile_picture = models.ImageField(upload_to='profile_pics/',blank=True,null=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
