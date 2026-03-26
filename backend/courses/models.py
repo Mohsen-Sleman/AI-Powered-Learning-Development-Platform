@@ -39,7 +39,7 @@ class Course(models.Model) :
     description = models.TextField()
     difficulty_level = models.CharField(max_length=3,choices=Level.choices,default=Level.BEGINNER)
     instructor = models.ForeignKey('users.User',related_name='courses',on_delete=models.CASCADE)
-    thumbnail = models.ImageField(upload_to='media/courses/thumbnails/')
+    thumbnail = models.ImageField(upload_to='courses/thumbnails/')
     # course_type = models.CharField(max_length=5 , choices=CourseType.choices,default=CourseType.FREE)
     # price = models.DecimalField(max_digits=6,decimal_places=2)
     status = models.CharField(max_length=4,choices=Status.choices,default=Status.DRAFT)
@@ -160,8 +160,7 @@ class Enrollment(models.Model) :
     user = models.ForeignKey('users.User',related_name='enrollments',on_delete=models.CASCADE)
     course = models.ForeignKey('Course',related_name='enrollments',on_delete=models.CASCADE)
     enrolled_at = models.DateTimeField(auto_now_add=True)
-    progress = models.PositiveIntegerField(default=0) 
-    completed = models.BooleanField(default=False)
+    progress = models.PositiveIntegerField(default=0)
 
     class Meta :
         constraints = [
@@ -174,25 +173,3 @@ class Enrollment(models.Model) :
     def __str__(self):
         return f"{self.user} - {self.course}"
     
-
-    def clean(self):
-        """
-        Check if progress more than 100 %
-        """
-        super().clean()
-
-        if self.progress > 100 :
-            raise ValidationError({'progress' :'Progress can\'t be more than 100'})
-
-        if self.progress < 100 and self.completed :
-            raise ValidationError({'completed' : 'Enrollment Can\'t be completed if progress less than 100'})
-
-    def save(self,*args,**kwargs):
-
-        if self.progress == 100 :
-            self.completed = True
-
-        self.full_clean()
-
-        return super().save(*args,**kwargs)
-        

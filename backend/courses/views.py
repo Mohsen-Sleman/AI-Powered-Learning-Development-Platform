@@ -1,7 +1,11 @@
 from django.shortcuts import render
-from .models import Track,Course,Section,CourseContent
-from .serializers import CourseSerializer,SectionSerializer,CourseContentSerializer
-from rest_framework.generics import RetrieveAPIView
+from .models import Track,Course,Section,CourseContent,Enrollment
+from .serializers import CourseSerializer,SectionSerializer,CourseContentSerializer,EnrollmentSerializer
+from rest_framework.generics import RetrieveAPIView,CreateAPIView,ListAPIView,UpdateAPIView,GenericAPIView
+from rest_framework.views import APIView
+from django.shortcuts import get_object_or_404
+from rest_framework.response import Response
+from rest_framework import status
 # Create your views here.
 
 
@@ -10,4 +14,31 @@ class RetriveCourse(RetrieveAPIView) :
     queryset = Course.objects.select_related('instructor').prefetch_related('sections__lessons').all()
     serializer_class = CourseSerializer
 
+
+class CreateUserEnrollment(CreateAPIView) :
+    serializer_class = EnrollmentSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(user = self.request.user)
+
+
+class ListUserEnrollment(ListAPIView) :
+    serializer_class = CourseSerializer
+
+    def get_queryset(self):
+        return Course.objects.filter(enrollments__user = self.request.user).select_related('instructor').prefetch_related('sections__lessons').all()
     
+class ProgressEnrollmentUpdateApiView(APIView) :
+
+    def patch(self,request,slug) :
+        course = get_object_or_404(Course,slug = slug)
+        enrollment = get_object_or_404(Enrollment,user=request.user,course = course)
+        lesson_order = request.data.get('lesson_order')
+
+        if lesson_order is None :
+            return Response({'error' : 'lesson_order is required'},status=status.HTTP_400_BAD_REQUEST)
+        
+        enrollment.progress = lesson_order
+        enrollment.save()
+        return Response({'message' : 'Progress updated successfully' , 'progress' : enrollment.progress})
+        
