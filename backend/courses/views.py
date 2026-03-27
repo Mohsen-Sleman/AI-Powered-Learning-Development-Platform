@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Track,Course,Section,CourseContent,Enrollment
-from .serializers import CourseSerializer,SectionSerializer,CourseContentSerializer,EnrollmentSerializer,CourseListSerializer
+from .serializers import CourseSerializer,SectionSerializer,CourseContentSerializer,EnrollmentSerializer,CourseListSerializer,EnrollmentCourseSerializer
 from rest_framework.generics import RetrieveAPIView,CreateAPIView,ListAPIView,UpdateAPIView,GenericAPIView
 from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
@@ -26,10 +26,10 @@ class CreateUserEnrollment(CreateAPIView) :
 
 
 class ListUserEnrollment(ListAPIView) :
-    serializer_class = CourseSerializer
+    serializer_class = EnrollmentSerializer
 
     def get_queryset(self):
-        return Course.objects.filter(enrollments__user = self.request.user).select_related('instructor').prefetch_related('sections__lessons').all()
+        return Enrollment.objects.filter(user = self.request.user).select_related('course__instructor')
     
 class ProgressEnrollmentUpdateApiView(APIView) :
 

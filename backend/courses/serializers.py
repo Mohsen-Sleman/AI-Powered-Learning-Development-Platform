@@ -58,8 +58,19 @@ class CourseSerializer(serializers.ModelSerializer) :
             'created_at',
             'sections',
         ]
+class EnrollmentCourseSerializer(serializers.ModelSerializer) :
+    instructor = AuthorSerializer(read_only = True)
+    class Meta :
+        model = Course
+        fields = [
+            'name',
+            'slug',
+            'thumbnail',
+            'instructor',
+        ]
 
 class EnrollmentSerializer(serializers.ModelSerializer) :
+    course = EnrollmentCourseSerializer(read_only = True)
     percentage = serializers.SerializerMethodField()
     completed = serializers.SerializerMethodField()
     class Meta :
