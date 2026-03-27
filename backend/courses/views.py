@@ -1,11 +1,14 @@
 from django.shortcuts import render
 from .models import Track,Course,Section,CourseContent,Enrollment
-from .serializers import CourseSerializer,SectionSerializer,CourseContentSerializer,EnrollmentSerializer
+from .serializers import CourseSerializer,SectionSerializer,CourseContentSerializer,EnrollmentSerializer,CourseListSerializer
 from rest_framework.generics import RetrieveAPIView,CreateAPIView,ListAPIView,UpdateAPIView,GenericAPIView
 from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import AllowAny
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters
 # Create your views here.
 
 
@@ -42,3 +45,13 @@ class ProgressEnrollmentUpdateApiView(APIView) :
         enrollment.save()
         return Response({'message' : 'Progress updated successfully' , 'progress' : enrollment.progress})
         
+
+class CourseListView(ListAPIView) :
+    queryset = Course.objects.filter(status = Course.Status.PUBLISHED).select_related('instructor').only('name','slug','thumbnail','difficulty_level','instructor__id','instructor__full_name')
+    serializer_class = CourseListSerializer
+    permission_classes = [AllowAny]
+    filter_backends = [DjangoFilterBackend,filters.SearchFilter,filters.OrderingFilter]
+    filterset_fields = ['instructor','difficulty_level']
+    search_fields = ['name']
+    ordering_fields = ['created_at']
+    ordering = ['-created_at']

@@ -91,3 +91,17 @@ class EnrollmentSerializer(serializers.ModelSerializer) :
         if total_lessons == 0:
             return False
         return obj.progress >= total_lessons
+
+
+
+class CourseListSerializer(serializers.ModelSerializer) :
+    instructor = AuthorSerializer(read_only = True)
+    class Meta : 
+        model = Course
+        fields = [
+            'name',
+            'slug',
+            'thumbnail',
+            'instructor',
+            'difficulty_level',
+        ]
