@@ -9,6 +9,7 @@ from rest_framework import status
 from rest_framework.permissions import AllowAny
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
+from rest_framework.exceptions import ValidationError
 # Create your views here.
 
 
@@ -22,6 +23,12 @@ class CreateUserEnrollment(CreateAPIView) :
     serializer_class = EnrollmentSerializer
 
     def perform_create(self, serializer):
+        user = self.request.user
+        course = serializer.validated_data['course']
+
+        if Enrollment.objects.filter(user=user,course=course).exists() :
+            raise ValidationError('You are already enrolled in this course.')
+
         serializer.save(user = self.request.user)
 
 

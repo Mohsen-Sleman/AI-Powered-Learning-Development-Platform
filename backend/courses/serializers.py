@@ -70,13 +70,18 @@ class EnrollmentCourseSerializer(serializers.ModelSerializer) :
         ]
 
 class EnrollmentSerializer(serializers.ModelSerializer) :
-    course = EnrollmentCourseSerializer(read_only = True)
+    course = serializers.PrimaryKeyRelatedField(
+        queryset = Course.objects.all(),
+        write_only = True
+    )
+    course_details = EnrollmentCourseSerializer(source='course',read_only = True)
     percentage = serializers.SerializerMethodField()
     completed = serializers.SerializerMethodField()
     class Meta :
         model = Enrollment
         fields = [
             'course',
+            'course_details',
             'progress',
             'percentage',
             'completed',
