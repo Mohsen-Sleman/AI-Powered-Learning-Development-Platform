@@ -3,6 +3,14 @@ from django.contrib.auth.models import AbstractBaseUser,PermissionsMixin,BaseUse
 from django.utils.translation import gettext_lazy as _
 # Create your models here.
 
+class Level(models.TextChoices):
+        BEGINNER = 'BEG', _('Beginner')
+        INTERMEDIATE = 'INT', _('Intermediate')
+        ADVANCED = 'ADV', _('Advanced')
+
+class RoleChoices(models.TextChoices) :
+        STUDENT = "STU" , _("Student")
+        INSTRUCTOR = "INS", _("Instructor")
 
 class UserManager(BaseUserManager) :
     def create_user(self,email,full_name,password=None,**extra_fields) :
@@ -16,7 +24,7 @@ class UserManager(BaseUserManager) :
         if self.model.objects.filter(email=email).exists() : 
             raise ValueError('This email address is already registered.')
 
-
+        
         user = self.model(email=email,full_name=full_name, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
@@ -39,13 +47,9 @@ class UserManager(BaseUserManager) :
 
 class User(AbstractBaseUser,PermissionsMixin) :
 
-    class Level(models.TextChoices):
-        BEGINNER = 'BEG', _('Beginner')
-        INTERMEDIATE = 'INT', _('Intermediate')
-        ADVANCED = 'ADV', _('Advanced')
-
     email = models.EmailField(unique=True, max_length=200)
     full_name = models.CharField(max_length=50)
+    role = models.CharField(max_length=3,choices=RoleChoices.choices,default=RoleChoices.STUDENT)
     skill_level = models.CharField(max_length=3,choices=Level.choices,default=Level.BEGINNER)
     profile_picture = models.ImageField(upload_to='profile_pics/',blank=True,null=True)
     is_active = models.BooleanField(default=True)
@@ -54,5 +58,5 @@ class User(AbstractBaseUser,PermissionsMixin) :
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['full_name']
+    REQUIRED_FIELDS = ['full_name','role','profile_picture']
 

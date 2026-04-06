@@ -9,12 +9,23 @@ class Level(models.TextChoices):
     INTERMEDIATE = 'INT', _('Intermediate')
     ADVANCED = 'ADV', _('Advanced')
 
+class Status(models.TextChoices) :
+        DRAFT = "DRF" ,_('Draft')
+        PUBLISHED = "PSH" ,_('Published')
+        HIDDEN = "HIDE" ,_('Hidden')
+
 class Track(models.Model) :
+
+
     name = models.CharField(max_length=100)
     description = models.TextField()
     difficulty_level = models.CharField(max_length=3,choices=Level.choices,default=Level.BEGINNER)
+    instructor = models.ForeignKey('users.User',related_name='tracks',on_delete=models.CASCADE)
+    thumbnail = models.ImageField(upload_to='tracks/thumbnails/')
+    status = models.CharField(max_length=4,choices=Status.choices,default=Status.DRAFT)
     created_at = models.DateTimeField(auto_now_add=True)
-
+    courses = models.ManyToManyField('Course',through='TrackCourse',related_name='tracks')
+    
     class Meta:
         ordering = ['-created_at']
 
@@ -29,11 +40,6 @@ class Course(models.Model) :
     #     FREE = "FREE" , _('Free')
     #     PAID = "PAID" , _("Paid")
 
-    class Status(models.TextChoices) :
-        DRAFT = "DRF" ,_('Draft')
-        PUBLISHED = "PSH" ,_('Published')
-        HIDDEN = "HIDE" ,_('Hidden')
-
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True,blank=True)
     description = models.TextField()
@@ -45,7 +51,6 @@ class Course(models.Model) :
     status = models.CharField(max_length=4,choices=Status.choices,default=Status.DRAFT)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    tracks = models.ManyToManyField('Track',related_name='courses',blank=True)
 
     class Meta:
         ordering = ['-created_at']
@@ -67,6 +72,23 @@ class Course(models.Model) :
                 i+=1
         return super().save(*args,**kwargs)
 
+class TrackCourse(models.Model) :
+    track = models.ForeignKey('Track',on_delete=models.CASCADE,related_name='track_courses')
+    course = models.ForeignKey('Course',on_delete=models.CASCADE)
+    order = models.PositiveIntegerField()
+
+    class Meta :
+        ordering = ['order']
+        constraints = [
+            models.UniqueConstraint(
+                fields=['track','order'],
+                name='unique_track_course_order'
+            ),
+            models.UniqueConstraint(
+                fields=['track','course'],
+                name='unique_track_course'
+            )
+        ]
 
     
 class Section(models.Model) :
@@ -97,6 +119,8 @@ class CourseContent(models.Model) :
         EXTERNAL_LINK = 'EX_LINK' , _('External_Link')
 
     title = models.CharField(max_length=200)
+    description = models.TextField()
+    thumbnail = models.ImageField(upload_to='courses/lessons/thumbnails/')
     content_type = models.CharField(max_length=10,choices=ContentType.choices,default=ContentType.VIDEO)
     video_url = models.URLField(blank=True,null=True)
     file = models.FileField(blank=True,null=True)
@@ -173,3 +197,15 @@ class Enrollment(models.Model) :
     def __str__(self):
         return f"{self.user} - {self.course}"
     
+class TrackEnrollment(models.Model) :
+    user = models.ForeignKey('users.User',related_name='track_enrollments',on_delete=models.CASCADE)
+    track = models.ForeignKey('Track',related_name='enrollments',on_delete=models.CASCADE)
+    enrolled_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta :
+        constraints = [
+            models.UniqueConstraint(
+                fields=['user','track'],
+                name='uniqe_user_track_enrollment'
+            )
+        ]

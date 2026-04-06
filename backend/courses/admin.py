@@ -1,6 +1,6 @@
 from django.contrib import admin
 import nested_admin
-from .models import Track,Course,Section,CourseContent,Enrollment
+from .models import Track,Course,Section,CourseContent,Enrollment,TrackCourse,TrackEnrollment
 from .forms import CourseContentForm
 # Register your models here.
 
@@ -42,7 +42,9 @@ class CourseContentAdmin(admin.ModelAdmin) :
     list_filter = ('content_type',)
 
 admin.site.register(Track)
+admin.site.register(TrackCourse)
 admin.site.register(Course , CourseAdmin)
 admin.site.register(Section,SectionAdmin)
 admin.site.register(CourseContent,CourseContentAdmin)
 admin.site.register(Enrollment)
+admin.site.register(TrackEnrollment)
