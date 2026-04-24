@@ -1,4 +1,4 @@
-from rest_framework.generics import CreateAPIView,ListAPIView
+from rest_framework.generics import CreateAPIView,ListAPIView,DestroyAPIView
 from rest_framework.views import APIView
 from rest_framework.exceptions import ValidationError
 from rest_framework import filters
@@ -12,9 +12,13 @@ from courses.serializers import EnrollmentSerializer,EnrollmenTracktSerializer
 
 
 
-class UserEnrollmentCreateView(CreateAPIView) :
+class UserEnrollmentCreateView(CreateAPIView,DestroyAPIView) :
+    queryset = Enrollment.objects.all()
     serializer_class = EnrollmentSerializer
     permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Enrollment.objects.filter(user = self.request.user)
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data = request.data , context = {'request' : request})
@@ -70,10 +74,14 @@ class ProgressEnrollmentUpdateView(APIView) :
         enrollment.save()
         return Response({'message' : 'Progress updated successfully' , 'progress' : enrollment.progress},status=status.HTTP_200_OK)
 
-class UserEnrollmentTrackCreateView(CreateAPIView) :
+class UserEnrollmentTrackCreateView(CreateAPIView,DestroyAPIView) :
+    queryset = TrackEnrollment
     serializer_class = EnrollmenTracktSerializer
     permission_classes = [IsAuthenticated]
     
+    def get_queryset(self):
+        return TrackEnrollment.objects.filter(user = self.request.user)
+
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data = request.data , context = {'request' : request})
         serializer.is_valid(raise_exception = True)

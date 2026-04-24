@@ -12,7 +12,9 @@ urlpatterns = [
     path('courses/enroll/',UserEnrollmentCreateView.as_view(),name= 'create-user-course-enroll'),
     path('tracks/enroll/',UserEnrollmentTrackCreateView.as_view(),name= 'create-user-track-enroll'),
     path('courses/enrollments/',ListUserEnrollmentView.as_view(),name= 'list-user-courses-enrollments'),
+    path('courses/enrollments/<int:pk>/delete/',UserEnrollmentCreateView.as_view(),name= 'delete-user-course-enrollment'),
     path('tracks/enrollments/',ListUserTrackEnrollmentView.as_view(),name= 'list-user-tracks-enrollments'),
+    path('tracks/enrollments/<int:pk>/delete/',UserEnrollmentTrackCreateView.as_view(),name= 'delete-user-track-enrollment'),
     path('courses/<slug:slug>/enrollment/progress/',ProgressEnrollmentUpdateView.as_view() , name = 'update-progress-enrollment'),
 
     # Tracks

@@ -702,7 +702,7 @@
               "header": [
                 {
                   "key": "Date",
-                  "value": "Tue, 31 Mar 2026 09:45:37 GMT"
+                  "value": "Fri, 24 Apr 2026 10:08:20 GMT"
                 },
                 {
                   "key": "Server",
@@ -726,7 +726,7 @@
                 },
                 {
                   "key": "Content-Length",
-                  "value": "489"
+                  "value": "589"
                 },
                 {
                   "key": "X-Content-Type-Options",
@@ -742,7 +742,7 @@
                 }
               ],
               "cookie": [],
-              "body": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc3NTAzNjczNywiaWF0IjoxNzc0OTUwMzM3LCJqdGkiOiJlMmRmYTE0MDE0Mzc0MTBiYTlkOWNmNDA0ODJjMzBmNSIsInVzZXJfaWQiOiI0In0.2gVTsllC6-rSlZ4dEtYEjV1RuYB68UreIO7VvlidsJo\",\n    \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc0OTUzOTM3LCJpYXQiOjE3NzQ5NTAzMzcsImp0aSI6IjA1N2Q1M2E2YTZjYzRhMWY4ZGQ4MDRjZmYxZGUxZTI5IiwidXNlcl9pZCI6IjQifQ.GE5qSEu8G_zfp-0Sk6P_2rOAR6wwPrQ7nqHcXWEB3RM\"\n}"
+              "body": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc3NzExMTcwMCwiaWF0IjoxNzc3MDI1MzAwLCJqdGkiOiIxYzJmZDI4ZmZjZTU0NDI1OTNiMzI3ZTVlODZmYmEwNSIsInVzZXJfaWQiOiI0In0.eUQfaazyjmXjh8vBGYpKkXQdrJAzyLN_m5sRxVxqw8U\",\n    \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3MDI4OTAwLCJpYXQiOjE3NzcwMjUzMDAsImp0aSI6ImFlYTE5NWJhZmRjNDQ0YjI5NzZiMGE2NjA1ZjhhMWUwIiwidXNlcl9pZCI6IjQifQ.awKbnSRdrpaI43CcP54c91wI5JHw8XRGr4uQ7sAYHF8\",\n    \"full_name\": \"test\",\n    \"profile_picture\": \"http://127.0.0.1:8000/media/profile_pics/notions_photos.jfif\"\n}"
             },
             {
               "name": "Invalid Credentials - 401 Unauthorized",
@@ -843,7 +843,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc3NTAzNzk1OSwiaWF0IjoxNzc0OTUxNTU5LCJqdGkiOiI0YzllY2RmOTU3ZmY0ZTQ4YWQ5ZmE4Zjg5YjU0YzE4NyIsInVzZXJfaWQiOiI0In0.c0OD95R2J6yDga_g2Rw513Lp9i9qJ-MHcNgiysfMDXs\"\r\n}",
+              "raw": "{\r\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc3NjgwMzk1NiwiaWF0IjoxNzc2NzE3NTU2LCJqdGkiOiJhNjI3ZTQyOTIyY2E0ODUxYjg1MTE1MzZlMWYwMGFjNCIsInVzZXJfaWQiOiI0In0.YfNZjaap-sAoCY2rAYWs0ST-1dQ7-x7LcGsa-5MXmdY\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1014,6 +1014,355 @@
               ],
               "cookie": [],
               "body": "{\n    \"detail\": \"Token is expired\",\n    \"code\": \"token_not_valid\"\n}"
+            },
+            {
+              "name": "Token Is Blacklisted - 401 Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc3NjgwMzk1NiwiaWF0IjoxNzc2NzE3NTU2LCJqdGkiOiJhNjI3ZTQyOTIyY2E0ODUxYjg1MTE1MzZlMWYwMGFjNCIsInVzZXJfaWQiOiI0In0.YfNZjaap-sAoCY2rAYWs0ST-1dQ7-x7LcGsa-5MXmdY\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/token/refresh/",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "token",
+                    "refresh",
+                    ""
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Mon, 20 Apr 2026 20:44:07 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.7"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "WWW-Authenticate",
+                  "value": "Bearer realm=\"api\""
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "58"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"detail\": \"Token is blacklisted\",\n    \"code\": \"token_not_valid\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/logout/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "logout",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Logout Successfully - 204 No Content",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc3NjgwNDM1MSwiaWF0IjoxNzc2NzE3OTUxLCJqdGkiOiIzODc5MmJiNjIzMDA0OWM4OTlkOTkxYTk2N2ZkNmZmZiIsInVzZXJfaWQiOiI0In0.RRyKVpZ6hlEaZemiAcALQ0cHqzKA4Hgz9UWjEmNe3JQ\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/auth/logout/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "auth",
+                    "logout",
+                    ""
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Mon, 20 Apr 2026 20:46:06 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.7"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "37"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"detail\": \"Successfully logged out.\"\n}"
+            },
+            {
+              "name": "Invalid Token - 400 Bad Request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc3NjgwNDM1MSwiaWF0IjoxNzc2NzE3OTUxLCJqdGkiOiIzODc5MmJiNjIzMDA0OWM4OTlkOTkxYTk2N2ZkNmZmZiIsInVzZXJfaWQiOiI0In0.RRyKVpZ6hlEaZemiAcALQ0cHqzKA4Hgz9UWjEmNe3JQ\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/auth/logout/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "auth",
+                    "logout",
+                    ""
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Mon, 20 Apr 2026 20:47:39 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.7"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "25"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": \"Invalid token\"\n}"
+            },
+            {
+              "name": "Missing Refresh Token - 400 Bad Request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/auth/logout/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "auth",
+                    "logout",
+                    ""
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Mon, 20 Apr 2026 20:48:03 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.7"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "38"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"detail\": \"Refresh token is required\"\n}"
             }
           ]
         }
@@ -10182,6 +10531,458 @@
           ]
         },
         {
+          "name": "Unenroll From Course",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/courses/enrollments/37/delete/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "courses",
+                "enrollments",
+                "37",
+                "delete",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Unenroll Successfully - 204 No Content",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/courses/enrollments/38/delete/",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "courses",
+                    "enrollments",
+                    "38",
+                    "delete",
+                    ""
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 24 Apr 2026 10:29:25 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.7"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, DELETE, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": null
+            },
+            {
+              "name": "Not Owner OR Invalid Enrollment ID  - 404 Not Found",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/courses/enrollments/38/delete/",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "courses",
+                    "enrollments",
+                    "38",
+                    "delete",
+                    ""
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 24 Apr 2026 10:30:25 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.7"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, DELETE, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "51"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"detail\": \"No Enrollment matches the given query.\"\n}"
+            },
+            {
+              "name": "No Auth - 401 Unauthorized",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/courses/enrollments/37/delete/",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "courses",
+                    "enrollments",
+                    "37",
+                    "delete",
+                    ""
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 24 Apr 2026 10:33:30 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.7"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "WWW-Authenticate",
+                  "value": "Bearer realm=\"api\""
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, Cookie, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, DELETE, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "58"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"detail\": \"Authentication credentials were not provided.\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Unenroll From Track",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/tracks/enrollments/16/delete/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "tracks",
+                "enrollments",
+                "16",
+                "delete",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Unenroll Successfully - 204 No Content",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/tracks/enrollments/16/delete/",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "tracks",
+                    "enrollments",
+                    "16",
+                    "delete",
+                    ""
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 24 Apr 2026 10:35:46 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.7"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, DELETE, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": null
+            },
+            {
+              "name": "Not Owner OR Invalid Enrollment ID - 404 Not Found",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/tracks/enrollments/16/delete/",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "tracks",
+                    "enrollments",
+                    "16",
+                    "delete",
+                    ""
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 24 Apr 2026 10:36:15 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.7"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, DELETE, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "56"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"detail\": \"No TrackEnrollment matches the given query.\"\n}"
+            },
+            {
+              "name": "No Auth - 401 Unauthorized",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/tracks/enrollments/16/delete/",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "tracks",
+                    "enrollments",
+                    "16",
+                    "delete",
+                    ""
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 24 Apr 2026 10:36:42 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.7"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "WWW-Authenticate",
+                  "value": "Bearer realm=\"api\""
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, Cookie, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, DELETE, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "58"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"detail\": \"Authentication credentials were not provided.\"\n}"
+            }
+          ]
+        },
+        {
           "name": "My Courses Enrollments",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
@@ -11556,6 +12357,504 @@
                 {
                   "key": "Allow",
                   "value": "PATCH, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "58"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"detail\": \"Authentication credentials were not provided.\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Profile",
+      "item": [
+        {
+          "name": "Get Profile",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/profile/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "profile",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get Student Profile Successfully - 200 OK",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/auth/profile/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "auth",
+                    "profile",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 24 Apr 2026 11:17:16 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.7"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "GET, PUT, PATCH, HEAD, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "317"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 4,\n    \"email\": \"test@gmail.com\",\n    \"full_name\": \"test\",\n    \"role\": \"STU\",\n    \"profile_picture\": \"http://127.0.0.1:8000/media/profile_pics/notions_photos.jfif\",\n    \"enrolled_courses\": [\n        {\n            \"id\": 36,\n            \"course\": 4,\n            \"course_name\": \"Django Course\"\n        }\n    ],\n    \"enrolled_tracks\": [\n        {\n            \"id\": 15,\n            \"track\": 21,\n            \"track_name\": \"AI Track\",\n            \"score\": null,\n            \"is_completed\": false\n        }\n    ]\n}"
+            },
+            {
+              "name": "Get Instructor Profile Successfully - 200 OK",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/auth/profile/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "auth",
+                    "profile",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 24 Apr 2026 11:25:38 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.7"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "GET, PUT, PATCH, HEAD, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "386"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 4,\n    \"email\": \"test@gmail.com\",\n    \"full_name\": \"test\",\n    \"role\": \"INS\",\n    \"profile_picture\": \"http://127.0.0.1:8000/media/profile_pics/notions_photos.jfif\",\n    \"teaching_courses\": [\n        {\n            \"id\": 10,\n            \"name\": \"backend Test\"\n        },\n        {\n            \"id\": 9,\n            \"name\": \"Ai Prombt Engennering\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Django Course\"\n        }\n    ],\n    \"teaching_tracks\": [\n        {\n            \"id\": 64,\n            \"name\": \"Python Track\"\n        },\n        {\n            \"id\": 21,\n            \"name\": \"AI Track\"\n        },\n        {\n            \"id\": 15,\n            \"name\": \"Backend RoadMap\"\n        }\n    ]\n}"
+            },
+            {
+              "name": "No Auth - 401 Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/auth/profile/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "auth",
+                    "profile",
+                    ""
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 24 Apr 2026 11:20:11 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.7"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "WWW-Authenticate",
+                  "value": "Bearer realm=\"api\""
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, Cookie, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "GET, PUT, PATCH, HEAD, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "58"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"detail\": \"Authentication credentials were not provided.\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Profile",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "full_name",
+                  "value": "",
+                  "type": "text",
+                  "uuid": "843e5265-7ea0-42c7-9819-d2d88555088a",
+                  "disabled": true
+                },
+                {
+                  "key": "profile_picture",
+                  "type": "file",
+                  "uuid": "d2e7e835-f2bc-4cb4-8f40-001e17e29ec4",
+                  "src": "postman-cloud:///1f130c8d-1ab8-4f70-b2b1-7c3fd78f92b1"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/profile/update/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "profile",
+                "update",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Successfully Update - 200 OK",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "full_name",
+                      "value": "Test Updated",
+                      "type": "text",
+                      "uuid": "843e5265-7ea0-42c7-9819-d2d88555088a"
+                    },
+                    {
+                      "key": "profile_picture",
+                      "type": "file",
+                      "uuid": "d2e7e835-f2bc-4cb4-8f40-001e17e29ec4",
+                      "src": "postman-cloud:///1f130c8d-1ab8-4f70-b2b1-7c3fd78f92b1"
+                    }
+                  ],
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/auth/profile/update/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "auth",
+                    "profile",
+                    "update",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 24 Apr 2026 11:28:58 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.7"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "GET, PUT, PATCH, HEAD, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "396"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 4,\n    \"email\": \"test@gmail.com\",\n    \"full_name\": \"Test Updated\",\n    \"role\": \"INS\",\n    \"profile_picture\": \"http://127.0.0.1:8000/media/profile_pics/notions_photos_1.jfif\",\n    \"teaching_courses\": [\n        {\n            \"id\": 10,\n            \"name\": \"backend Test\"\n        },\n        {\n            \"id\": 9,\n            \"name\": \"Ai Prombt Engennering\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Django Course\"\n        }\n    ],\n    \"teaching_tracks\": [\n        {\n            \"id\": 64,\n            \"name\": \"Python Track\"\n        },\n        {\n            \"id\": 21,\n            \"name\": \"AI Track\"\n        },\n        {\n            \"id\": 15,\n            \"name\": \"Backend RoadMap\"\n        }\n    ]\n}"
+            },
+            {
+              "name": "No Auth - 401 Unauthorized",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "full_name",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "843e5265-7ea0-42c7-9819-d2d88555088a",
+                      "disabled": true
+                    },
+                    {
+                      "key": "profile_picture",
+                      "type": "file",
+                      "uuid": "d2e7e835-f2bc-4cb4-8f40-001e17e29ec4",
+                      "src": "postman-cloud:///1f130c8d-1ab8-4f70-b2b1-7c3fd78f92b1"
+                    }
+                  ],
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/auth/profile/update/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "auth",
+                    "profile",
+                    "update",
+                    ""
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 24 Apr 2026 11:30:07 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.7"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "WWW-Authenticate",
+                  "value": "Bearer realm=\"api\""
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, Cookie, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "GET, PUT, PATCH, HEAD, OPTIONS"
                 },
                 {
                   "key": "X-Frame-Options",

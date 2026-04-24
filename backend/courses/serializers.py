@@ -369,9 +369,11 @@ class EnrollmenTracktSerializer(serializers.ModelSerializer) :
             'id',
             'track',
             'track_detail',
+            'score',
+            'is_completed',
             'enrolled_at',
         ]
-        read_only_fields = ['enrolled_at']
+        read_only_fields = ['score','is_completed','enrolled_at']
 
 
 class TrackCourseSerializer(serializers.ModelSerializer) :

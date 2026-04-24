@@ -1,5 +1,24 @@
 from rest_framework import serializers
-from users.models import User,RoleChoices
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from users.models import RoleChoices
+from django.contrib.auth import get_user_model
+from courses.serializers import EnrollmentSerializer,EnrollmenTracktSerializer,CourseListSerializer,TrackListSerializer
+from courses.models import Enrollment,TrackEnrollment,Course,Track
+User = get_user_model()
+
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer) :
+
+    def validate(self, attrs):
+        data = super().validate(attrs)
+
+        data['full_name'] = self.user.full_name
+
+        if self.user.profile_picture:
+            data['profile_picture'] = self.context['request'].build_absolute_uri(self.user.profile_picture.url)
+        else:
+            data['profile_picture'] = None
+
+        return data
 
 class RegisterSerializer(serializers.ModelSerializer) :
     password2 = serializers.CharField(write_only = True)
@@ -38,3 +57,71 @@ class RegisterSerializer(serializers.ModelSerializer) :
                                         password=validated_data['password'],
                                         role=validated_data['role'],
                                         profile_picture=validated_data['profile_picture'])
+
+class ProfileEnrollmentSerialier(serializers.ModelSerializer) :
+    course_name = serializers.CharField(source='course.name',read_only = True)
+    class Meta :
+        model = Enrollment
+        fields = [
+            'id',
+            'course',
+            'course_name',
+        ]
+
+class ProfileEnrollmentTrackSerializer(serializers.ModelSerializer) :
+    track_name = serializers.CharField(source='track.name',read_only = True)
+    class Meta :
+        model = TrackEnrollment
+        fields = [
+            'id',
+            'track',
+            'track_name',
+            'score',
+            'is_completed',
+        ]
+
+class ProfileCourseSerializer(serializers.ModelSerializer) :
+    class Meta :
+        model = Course
+        fields = [
+            'id',
+            'name'
+        ]
+
+class ProfileTrackSerializer(serializers.ModelSerializer) :
+    class Meta :
+        model = Track
+        fields = [
+            'id',
+            'name'
+        ]
+
+class ProfileSerializer(serializers.ModelSerializer) :
+    class Meta :
+        model = User
+        fields = [
+            'id',
+            'email',
+            'full_name',
+            'role',
+            'profile_picture',
+        ]
+        read_only_fields = ['email','role']
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+
+        if instance.role == RoleChoices.STUDENT:
+            
+            enrolled_courses = Enrollment.objects.filter(user = instance)
+            enrolled_tracks = TrackEnrollment.objects.filter(user = instance)
+            representation['enrolled_courses'] = ProfileEnrollmentSerialier(enrolled_courses, many=True).data
+            representation['enrolled_tracks'] = ProfileEnrollmentTrackSerializer(enrolled_tracks, many=True).data
+            
+        elif instance.role == RoleChoices.INSTRUCTOR:
+            teaching_courses = Course.objects.filter(instructor = instance)
+            teaching_tracks = Track.objects.filter(instructor = instance)
+            representation['teaching_courses'] = ProfileCourseSerializer(teaching_courses, many=True).data
+            representation['teaching_tracks'] = ProfileTrackSerializer(teaching_tracks, many=True).data
+
+        return representation

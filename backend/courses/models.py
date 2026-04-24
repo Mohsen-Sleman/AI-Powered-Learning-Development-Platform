@@ -201,7 +201,9 @@ class TrackEnrollment(models.Model) :
     user = models.ForeignKey('users.User',related_name='track_enrollments',on_delete=models.CASCADE)
     track = models.ForeignKey('Track',related_name='enrollments',on_delete=models.CASCADE)
     enrolled_at = models.DateTimeField(auto_now_add=True)
-
+    score = models.FloatField(null=True,blank=True)
+    is_completed = models.BooleanField(default=False)
+    updated_at = models.DateTimeField(auto_now=True)
     class Meta :
         constraints = [
             models.UniqueConstraint(
