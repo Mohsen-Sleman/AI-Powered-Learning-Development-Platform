@@ -1,0 +1,23 @@
+version : '3.8'
+services :
+  my_postgres_db :
+    image : postgres:15
+    ports :
+      - 5432:5432
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment: 
+      - POSTGRES_USER=$${DB_USER}
+      - POSTGRES_PASSWORD=$${Django_Postgres#01}
+      - POSTGRES_DB=$${learning_platform}
+  django:
+    build: ./backend
+    ports:
+      - 8000:8000
+    env_file:
+      - .env
+    depends_on:
+      - my_postgres_db
+
+volumes:
+  postgres-data:
