@@ -1,8 +1,8 @@
-Learning Platform API
+# Learning Platform API
 
-Backend API built with Django & Django REST Framework.
-
-🚀 Features
+## Backend API built with Django & Django REST Framework.
+---
+## 🚀 Features
 
 - Authentication (JWT)
 - Courses & Tracks system
@@ -10,11 +10,11 @@ Backend API built with Django & Django REST Framework.
 - PostgreSQL database
 - Dockerized setup
 
-🐳 Run with Docker
+## 🐳 Run with Docker
+ 
+   docker-compose up --build
 
-docker-compose up --build
-
-⚙️ Tech Stack
+## ⚙️ Tech Stack
 
 - Django
 - DRF
