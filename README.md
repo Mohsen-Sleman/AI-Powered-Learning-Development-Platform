@@ -12,7 +12,7 @@
 
 ## 🐳 Run with Docker
  
-   docker-compose up --build
+ ``` docker-compose up --build ```
 
 ## ⚙️ Tech Stack
 
