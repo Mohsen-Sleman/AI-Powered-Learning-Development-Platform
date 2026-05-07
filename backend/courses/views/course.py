@@ -6,6 +6,7 @@ from rest_framework import filters
 from django.db.models import Q
 from users.permissions import IsInstructor
 from courses.models import Course,Status
+from courses.filters import CourseFilter
 from users.models import RoleChoices
 from courses.serializers import CourseDetailSerializer,CourseWriteSerializer,CourseListSerializer
 
@@ -14,9 +15,9 @@ class CourseListView(ListAPIView) :
     queryset = Course.objects.filter(status = Status.PUBLISHED).select_related('instructor').only('name','slug','thumbnail','difficulty_level','instructor__id','instructor__full_name')
     serializer_class = CourseListSerializer
     permission_classes = [AllowAny]
-    filter_backends = [DjangoFilterBackend,filters.SearchFilter,filters.OrderingFilter]
-    filterset_fields = ['instructor','difficulty_level']
-    search_fields = ['name']
+    filter_backends = [DjangoFilterBackend,filters.OrderingFilter]
+    filterset_fields = ['instructor',{'difficulty_level': ['in', 'exact']},]
+    filterset_class = CourseFilter
     ordering_fields = ['created_at']
     ordering = ['-created_at']
 

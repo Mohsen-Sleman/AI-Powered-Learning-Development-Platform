@@ -9,7 +9,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from django.shortcuts import get_object_or_404
 from courses.models import Track,Course,Enrollment,TrackEnrollment
 from courses.serializers import EnrollmentSerializer,EnrollmenTracktSerializer
-
+from courses.filters import EnrollmentCourseFilter,EnrollmentTrackFilter
 
 
 class UserEnrollmentCreateView(CreateAPIView,DestroyAPIView) :
@@ -43,8 +43,8 @@ class UserEnrollmentCreateView(CreateAPIView,DestroyAPIView) :
 class ListUserEnrollmentView(ListAPIView) :
     serializer_class = EnrollmentSerializer
     permission_classes = [IsAuthenticated]
-    filter_backends = [DjangoFilterBackend,filters.SearchFilter,filters.OrderingFilter]
-    search_fields = ['course__name']
+    filter_backends = [DjangoFilterBackend,filters.OrderingFilter]
+    filterset_class = EnrollmentCourseFilter
     ordering_fields = ['enrolled_at']
     ordering = ['-enrolled_at']
 
@@ -104,8 +104,8 @@ class ListUserTrackEnrollmentView(ListAPIView) :
 
     serializer_class = EnrollmenTracktSerializer
     permission_classes = [IsAuthenticated]
-    filter_backends = [DjangoFilterBackend,filters.SearchFilter,filters.OrderingFilter]
-    search_fields = ['track__name']
+    filter_backends = [DjangoFilterBackend,filters.OrderingFilter]
+    filterset_class = EnrollmentTrackFilter
     ordering_fields = ['enrolled_at']
     ordering = ['-enrolled_at']
 
