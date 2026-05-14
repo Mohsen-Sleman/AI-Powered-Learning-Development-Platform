@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,PermissionsMixin,BaseUserManager
 from django.utils.translation import gettext_lazy as _
+import pyotp
 # Create your models here.
 
 class Level(models.TextChoices):
@@ -54,9 +55,11 @@ class User(AbstractBaseUser,PermissionsMixin) :
     profile_picture = models.ImageField(upload_to='profile_pics/',blank=True,null=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
+    is_verified = models.BooleanField(default=False)
+    otp_secret = models.CharField(max_length=32,default=pyotp.random_base32)
 
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['full_name','role','profile_picture']
+    REQUIRED_FIELDS = ['full_name',]
 

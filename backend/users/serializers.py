@@ -4,12 +4,34 @@ from users.models import RoleChoices
 from django.contrib.auth import get_user_model
 from courses.serializers import EnrollmentSerializer,EnrollmenTracktSerializer,CourseListSerializer,TrackListSerializer
 from courses.models import Enrollment,TrackEnrollment,Course,Track
+from rest_framework.exceptions import AuthenticationFailed
+from django.conf import settings
+from django.core.mail import send_mail
+import pyotp
 User = get_user_model()
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer) :
 
     def validate(self, attrs):
         data = super().validate(attrs)
+
+        if not self.user.is_verified :
+            
+            totp = pyotp.TOTP(self.user.otp_secret,interval=300)
+            otp_code = totp.now()
+
+            send_mail(
+                'Verify Your Account',
+                f'Your verification code is: {otp_code}',
+                settings.DEFAULT_FROM_EMAIL,
+                [self.user.email],
+                fail_silently=False,
+            )
+            raise AuthenticationFailed({
+                "detail": "Account not verified. A verification code has been sent to your email.",
+                "is_verified": False,
+                "email": self.user.email
+            })
 
         data['full_name'] = self.user.full_name
 
@@ -52,11 +74,12 @@ class RegisterSerializer(serializers.ModelSerializer) :
 
     def create(self, validated_data):
         validated_data.pop('password2')
+        profile_picture = validated_data.get('profile_picture',None)
         return User.objects.create_user(email=validated_data['email'],
                                         full_name=validated_data['full_name'],
                                         password=validated_data['password'],
                                         role=validated_data['role'],
-                                        profile_picture=validated_data['profile_picture'])
+                                        profile_picture = profile_picture)
 
 class ProfileEnrollmentSerialier(serializers.ModelSerializer) :
     course_name = serializers.CharField(source='course.name',read_only = True)
@@ -125,3 +148,9 @@ class ProfileSerializer(serializers.ModelSerializer) :
             representation['teaching_tracks'] = ProfileTrackSerializer(teaching_tracks, many=True).data
 
         return representation
+
+
+class CustomUserDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('pk', 'email', 'full_name', 'profile_picture',)

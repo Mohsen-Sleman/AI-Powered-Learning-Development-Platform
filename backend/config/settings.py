@@ -51,7 +51,18 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
     'nested_admin',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
+    'dj_rest_auth.registration', 
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.github',
+    'django.contrib.sites',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -62,6 +73,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -173,3 +185,27 @@ CORS_ALLOW_HEADERS = [
 ]
 
 CORS_ALLOW_CREDENTIALS = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'learning.platform.auth@gmail.com'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = 'Code Verse <learning.platform.auth@gmail.com>'
+
+SOCIALACCOUNT_ADAPTER = 'users.adapters.MySocialAccountAdapter'
+ACCOUNT_LOGIN_METHODS = {'email'}
+ACCOUNT_SIGNUP_FIELDS = ['email', 'full_name']
+ACCOUNT_EMAIL_REQUIRED = True 
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+
+REST_USE_JWT = True
+JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token' 
+REST_AUTH = {
+    'USER_DETAILS_SERIALIZER': 'users.serializers.CustomUserDetailSerializer',
+    'USE_JWT': True,
+    'JWT_AUTH_HTTPONLY': False,
+}
